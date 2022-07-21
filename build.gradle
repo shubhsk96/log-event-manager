@@ -31,6 +31,9 @@ dependencies {
 }
 
 test {
-	useJUnitPlatform()
-	maxHeapSize = "512m"
+	useJUnit()
+	maxHeapSize = '1G'
+	filter {
+		includeTestsMatching "com.creditsuisse.assignment.*"
+	}
 }
