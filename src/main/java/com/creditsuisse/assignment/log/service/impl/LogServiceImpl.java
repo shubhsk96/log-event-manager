@@ -40,7 +40,7 @@ public class LogServiceImpl implements LogService {
                         eventConverter.convert(logEntry);
                     });
         } catch (IOException e) {
-            log.error("Error occurred during read, path: " + path, e);
+            log.error("Exception occurred during read, path: {}", path);
         }
     }
 
@@ -55,7 +55,7 @@ public class LogServiceImpl implements LogService {
             log.info("Line {} is transformed to {}", logLine, logEntry);
             return logEntry;
         } catch (IOException e) {
-            log.error("Couldn't parse " + logLine, e);
+            log.error("Exception occurred in parsing line: {}", logLine);
             return null;
         }
     }

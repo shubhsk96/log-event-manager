@@ -34,7 +34,7 @@ public class JavaApplication implements ApplicationRunner {
 	@Override
 	public void run(ApplicationArguments args) {
 		String[] arguments = args.getSourceArgs();
-		if(ObjectUtils.isEmpty(args)) {
+		if(ObjectUtils.isEmpty(arguments)) {
 			throw new IllegalArgumentException("Illegal or Inappropriate arguments passed.");
 		}
 		logService.parseLogs(arguments[0]);

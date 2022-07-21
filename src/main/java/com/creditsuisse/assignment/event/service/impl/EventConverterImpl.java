@@ -40,8 +40,10 @@ public class EventConverterImpl implements EventConverter {
     @Override
     public Event convert(Log logRecord) {
         Log processedLog = logsMap.putIfAbsent(logRecord.getId(), logRecord);
-        if (Objects.isNull(processedLog) || processedLog.equals(logRecord))
+        if (Objects.isNull(processedLog) || processedLog.equals(logRecord)) {
             return null;
+        }
+        log.info("Current logRecord: {} and processedLog: {} ", logRecord, processedLog);
         Event event = convertToEvent(logRecord, processedLog);
         eventService.addEvent(event);
         return event;
@@ -56,7 +58,7 @@ public class EventConverterImpl implements EventConverter {
     private Event convertToEvent(Log logRecord, Log processedLog) {
         long duration = Math.abs(logRecord.getTimestamp() - processedLog.getTimestamp());
         Event event = new Event(logRecord, duration);
-        log.info("Logs {} and {} are transformed to {}", logRecord, processedLog, event);
+        log.info("Logs {} and {} are transformed to Event: {}", logRecord, processedLog, event);
         return event;
     }
 }
