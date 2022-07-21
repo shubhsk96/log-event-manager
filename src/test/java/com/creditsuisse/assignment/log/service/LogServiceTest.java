@@ -1,4 +1,4 @@
-package com.creditsuisse.assignment.log;
+package com.creditsuisse.assignment.log.service;
 
 import com.creditsuisse.assignment.event.service.EventConverter;
 import com.creditsuisse.assignment.log.model.Log;
