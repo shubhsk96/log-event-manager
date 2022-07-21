@@ -13,6 +13,10 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
+/**
+ * Implementing class for LogService
+ * @author Shubham K
+ */
 @Log4j2
 @Service
 public class LogServiceImpl implements LogService {
@@ -22,6 +26,10 @@ public class LogServiceImpl implements LogService {
     @Autowired
     private EventConverter eventConverter;
 
+    /**
+     * Read the content of the logs file and parse it
+     * @param path Log file path
+     */
     @Override
     public void parseLogs(String path) {
         try {
@@ -36,6 +44,11 @@ public class LogServiceImpl implements LogService {
         }
     }
 
+    /**
+     * Helper method to parse a single log record
+     * @param logLine single log entry/record
+     * @return logEntry
+     */
     private Log parseLogLine(String logLine) {
         try {
             Log logEntry = objectMapper.readValue(logLine, Log.class);

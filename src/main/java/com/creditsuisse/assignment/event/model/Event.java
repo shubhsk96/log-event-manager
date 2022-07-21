@@ -12,6 +12,10 @@ import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.Id;
 
+/**
+ * Represents the Event
+ * @author Shubham K
+ */
 @Data
 @Entity
 @NoArgsConstructor

@@ -9,11 +9,22 @@ import com.fasterxml.jackson.databind.deser.std.StdDeserializer;
 
 import java.io.IOException;
 
+/**
+ * Class to deserialize JSON string into DTO object
+ * @author Shubham K
+ */
 public class LogDeserializer extends StdDeserializer<Log> {
     protected LogDeserializer(Class<?> vc) {
         super(vc);
     }
 
+    /**
+     * Parse the JSON string from logfile and deserialize it to ApplicationLog type object
+     * @param jsonParser
+     * @param deserializationContext
+     * @return log entry
+     * @throws IOException
+     */
     @Override
     public Log deserialize(JsonParser jsonParser, DeserializationContext deserializationContext) throws IOException {
         JsonNode node = jsonParser.getCodec().readTree(jsonParser);
