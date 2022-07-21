@@ -16,7 +16,6 @@ public class JavaApplication implements ApplicationRunner {
 
 	public static void main(String[] args) {
 		SpringApplication application = new SpringApplication(JavaApplication.class);
-		application.setHeadless(false);
 		application.run(args);
 	}
 

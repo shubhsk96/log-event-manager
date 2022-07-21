@@ -23,8 +23,9 @@ public class EventConverterImpl implements EventConverter {
         this.logsMap = new ConcurrentHashMap<>();
     }
 
-    EventConverterImpl(ConcurrentHashMap<String, Log> map) {
-        this.logsMap = map;
+    public EventConverterImpl(ConcurrentHashMap<String, Log> logsMap, EventService eventService) {
+        this.logsMap = logsMap;
+        this.eventService = eventService;
     }
 
     @Override
@@ -32,14 +33,15 @@ public class EventConverterImpl implements EventConverter {
         Log processedLog = logsMap.putIfAbsent(logRecord.getId(), logRecord);
         if (Objects.isNull(processedLog) || processedLog.equals(logRecord))
             return null;
-        return convertToEvent(logRecord, processedLog);
+        Event event = convertToEvent(logRecord, processedLog);
+        eventService.addEvent(event);
+        return event;
     }
 
     private Event convertToEvent(Log logRecord, Log processedLog) {
         long duration = Math.abs(logRecord.getTimestamp() - processedLog.getTimestamp());
         Event event = new Event(logRecord, duration);
         log.info("Logs {} and {} are transformed to {}", logRecord, processedLog, event);
-        eventService.addEvent(event);
         return event;
     }
 }
