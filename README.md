@@ -43,5 +43,5 @@ Moreover, events will be flagged/alerted with true in HSQL database if it took l
 ```
 
 
-## Sample HSQL database output (Using HSQL datbase manager)
+## Sample HSQL database output (Using HSQL database manager)
 <img width="803" alt="image" src="https://user-images.githubusercontent.com/30280454/180367255-a0e23c91-98c1-4182-9215-5d32a9f74b2d.png">
